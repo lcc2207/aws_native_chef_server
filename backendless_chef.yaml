@@ -136,23 +136,23 @@ Parameters:
     Type: String
     Default: 'CustomTag1'
   CustomTagValue1:
-    Description: Custom Tag 1 value
+    Description: Custom Tag1 value
     Type: String
     Default: 'CustomTag1'
   CustomTagName2:
-    Description: Custom Tag 2
+    Description: Custom Tag2
     Type: String
     Default: 'CustomTag2'
   CustomTagValue2:
-    Description: Custom Tag 2 value
+    Description: Custom Tag2 value
     Type: String
     Default: 'CustomTag2'
   CustomTagName3:
-    Description: Custom Tag 3
+    Description: Custom Tag3
     Type: String
     Default: 'CustomTag3'
   CustomTagValue3:
-    Description: Custom Tag 3 value
+    Description: Custom Tag3 value
     Type: String
     Default: 'CustomTag3'
 
@@ -205,14 +205,14 @@ Resources:
       - Key: X-Contact
         Value: !Ref ContactEmail
         PropagateAtLaunch: true
-      - Key: !Ref Tag1
-        Value: !Ref Tag1value
+      - Key: !Ref CustomTagName1
+        Value: !Ref CustomTagValue1
         PropagateAtLaunch: true
-      - Key: !Ref Tag2
-        Value: !Ref Tag2value
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue2
         PropagateAtLaunch: true
-      - Key: !Ref Tag3
-        Value: !Ref Tag3value
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue3
         PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
 
@@ -238,14 +238,14 @@ Resources:
       - Key: X-Contact
         Value: !Ref ContactEmail
         PropagateAtLaunch: true
-      - Key: !Ref Tag1
-        Value: !Ref Tag1value
+      - Key: !Ref CustomTagName1
+        Value: !Ref CustomTagValue1
         PropagateAtLaunch: true
-      - Key: !Ref Tag2
-        Value: !Ref Tag2value
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue2
         PropagateAtLaunch: true
-      - Key: !Ref Tag3
-        Value: !Ref Tag3value
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue3
         PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
 
@@ -366,12 +366,12 @@ Resources:
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-FE-SG
-      - Key: !Ref Tag1
-        Value: !Ref Tag1value
-      - Key: !Ref Tag2
-        Value: !Ref Tag2value
-      - Key: !Ref Tag3
-        Value: !Ref Tag3value
+      - Key: !Ref CustomTagName1
+        Value: !Ref CustomTagValue1
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue2
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue3
       VpcId: !Ref VPC
 
   LoadBalancerSecurityGroup:
@@ -398,12 +398,12 @@ Resources:
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-ELB-SG
-      - Key: !Ref Tag1
-        Value: !Ref Tag1value
-      - Key: !Ref Tag2
-        Value: !Ref Tag2value
-      - Key: !Ref Tag3
-        Value: !Ref Tag3value
+      - Key: !Ref CustomTagName1
+        Value: !Ref CustomTagValue1
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue2
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue3
       VpcId: !Ref VPC
     Type: AWS::EC2::SecurityGroup
 
@@ -431,12 +431,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
-        - Key: !Ref Tag1
-          Value: !Ref Tag1value
-        - Key: !Ref Tag2
-          Value: !Ref Tag2value
-        - Key: !Ref Tag3
-          Value: !Ref Tag3value
+        - Key: !Ref CustomTagName1
+          Value: !Ref CustomTagValue1
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue2
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue3
 
   ChefALB:
     Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
@@ -454,12 +454,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
-        - Key: !Ref Tag1
-          Value: !Ref Tag1value
-        - Key: !Ref Tag2
-          Value: !Ref Tag2value
-        - Key: !Ref Tag3
-          Value: !Ref Tag3value
+        - Key: !Ref CustomTagName1
+          Value: !Ref CustomTagValue1
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue2
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue3
 
   ChefALBListener:
     Type: "AWS::ElasticLoadBalancingV2::Listener"
@@ -505,12 +505,12 @@ Resources:
             Value: !Ref ContactDept
           - Key: X-Contact
             Value: !Ref ContactEmail
-          - Key: !Ref Tag1
-            Value: !Ref Tag1value
-          - Key: !Ref Tag2
-            Value: !Ref Tag2value
-          - Key: !Ref Tag3
-            Value: !Ref Tag3value
+          - Key: !Ref CustomTagName1
+            Value: !Ref CustomTagValue1
+          - Key: !Ref CustomTagName2
+            Value: !Ref CustomTagValue2
+          - Key: !Ref CustomTagName2
+            Value: !Ref CustomTagValue3
 
   ChefBootstrapTargetGroup:
       Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
@@ -531,12 +531,12 @@ Resources:
             Value: !Ref ContactDept
           - Key: X-Contact
             Value: !Ref ContactEmail
-          - Key: !Ref Tag1
-            Value: !Ref Tag1value
-          - Key: !Ref Tag2
-            Value: !Ref Tag2value
-          - Key: !Ref Tag3
-            Value: !Ref Tag3value
+          - Key: !Ref CustomTagName1
+            Value: !Ref CustomTagValue1
+          - Key: !Ref CustomTagName2
+            Value: !Ref CustomTagValue2
+          - Key: !Ref CustomTagName2
+            Value: !Ref CustomTagValue3
 
   ServerLaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
@@ -731,12 +731,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
-        - Key: !Ref Tag1
-          Value: !Ref Tag1value
-        - Key: !Ref Tag2
-          Value: !Ref Tag2value
-        - Key: !Ref Tag3
-          Value: !Ref Tag3value
+        - Key: !Ref CustomTagName1
+          Value: !Ref CustomTagValue1
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue2
+        - Key: !Ref CustomTagName2
+          Value: !Ref CustomTagValue3
 
 #########################################################################################
 # ElasticSearch
@@ -775,12 +775,12 @@ Resources:
         Value: !Ref ContactDept
       - Key: X-Contact
         Value: !Ref ContactEmail
-      - Key: !Ref Tag1
-        Value: !Ref Tag1value
-      - Key: !Ref Tag2
-        Value: !Ref Tag2value
-      - Key: !Ref Tag3
-        Value: !Ref Tag3value
+      - Key: !Ref CustomTagName1
+        Value: !Ref CustomTagValue1
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue2
+      - Key: !Ref CustomTagName2
+        Value: !Ref CustomTagValue3
 
 
 #########################################################################################
