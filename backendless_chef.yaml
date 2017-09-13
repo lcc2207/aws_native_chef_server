@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: AWS Native Chef Server v2.4.4
+Description: AWS Native Chef Server v2.4.5
 
 Parameters:
   ChefServerPackage:
@@ -131,6 +131,30 @@ Parameters:
   ContactEmail:
     Description: Contact email for Cloudwatch notifications and instance tagging
     Type: String
+  Tag1:
+    Description: Custom Tag1
+    Type: String
+    Default: 'CustomTag1'
+  Tag1value:
+    Description: Custom Tag1 value
+    Type: String
+    Default: 'CustomTag1'
+  Tag2:
+    Description: Custom Tag2
+    Type: String
+    Default: 'CustomTag2'
+  Tag2value:
+    Description: Custom Tag2 value
+    Type: String
+    Default: 'CustomTag2'
+  Tag3:
+    Description: Custom Tag3
+    Type: String
+    Default: 'CustomTag3'
+  Tag3value:
+    Description: Custom Tag3 value
+    Type: String
+    Default: 'CustomTag3'
 
 Conditions:
   CreateChefServerIamRole:
@@ -181,6 +205,15 @@ Resources:
       - Key: X-Contact
         Value: !Ref ContactEmail
         PropagateAtLaunch: true
+      - Key: !Ref Tag1
+        Value: !Ref Tag1value
+        PropagateAtLaunch: true
+      - Key: !Ref Tag2
+        Value: !Ref Tag2value
+        PropagateAtLaunch: true
+      - Key: !Ref Tag3
+        Value: !Ref Tag3value
+        PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
 
 # The rest of the servers work in a scalable ASG based on CPU load
@@ -204,6 +237,15 @@ Resources:
         PropagateAtLaunch: true
       - Key: X-Contact
         Value: !Ref ContactEmail
+        PropagateAtLaunch: true
+      - Key: !Ref Tag1
+        Value: !Ref Tag1value
+        PropagateAtLaunch: true
+      - Key: !Ref Tag2
+        Value: !Ref Tag2value
+        PropagateAtLaunch: true
+      - Key: !Ref Tag3
+        Value: !Ref Tag3value
         PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
 
@@ -324,6 +366,12 @@ Resources:
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-FE-SG
+      - Key: !Ref Tag1
+        Value: !Ref Tag1value
+      - Key: !Ref Tag2
+        Value: !Ref Tag2value
+      - Key: !Ref Tag3
+        Value: !Ref Tag3value
       VpcId: !Ref VPC
 
   LoadBalancerSecurityGroup:
@@ -350,6 +398,12 @@ Resources:
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-ELB-SG
+      - Key: !Ref Tag1
+        Value: !Ref Tag1value
+      - Key: !Ref Tag2
+        Value: !Ref Tag2value
+      - Key: !Ref Tag3
+        Value: !Ref Tag3value
       VpcId: !Ref VPC
     Type: AWS::EC2::SecurityGroup
 
@@ -377,6 +431,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
+        - Key: !Ref Tag1
+          Value: !Ref Tag1value
+        - Key: !Ref Tag2
+          Value: !Ref Tag2value
+        - Key: !Ref Tag3
+          Value: !Ref Tag3value
 
   ChefALB:
     Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
@@ -394,6 +454,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
+        - Key: !Ref Tag1
+          Value: !Ref Tag1value
+        - Key: !Ref Tag2
+          Value: !Ref Tag2value
+        - Key: !Ref Tag3
+          Value: !Ref Tag3value
 
   ChefALBListener:
     Type: "AWS::ElasticLoadBalancingV2::Listener"
@@ -439,6 +505,12 @@ Resources:
             Value: !Ref ContactDept
           - Key: X-Contact
             Value: !Ref ContactEmail
+          - Key: !Ref Tag1
+            Value: !Ref Tag1value
+          - Key: !Ref Tag2
+            Value: !Ref Tag2value
+          - Key: !Ref Tag3
+            Value: !Ref Tag3value
 
   ChefBootstrapTargetGroup:
       Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
@@ -459,6 +531,12 @@ Resources:
             Value: !Ref ContactDept
           - Key: X-Contact
             Value: !Ref ContactEmail
+          - Key: !Ref Tag1
+            Value: !Ref Tag1value
+          - Key: !Ref Tag2
+            Value: !Ref Tag2value
+          - Key: !Ref Tag3
+            Value: !Ref Tag3value
 
   ServerLaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
@@ -556,6 +634,7 @@ Resources:
                 rabbitmq['queue_length_monitor_enabled'] = false
                 opscode_expander['enable'] = false
                 dark_launch['actions'] = false
+
             /usr/local/bin/aws-signing-proxy:
               source: https://github.com/nsdavidson/aws-signing-proxy/releases/download/v0.3.0/aws-signing-proxy
               mode: '000755'
@@ -652,6 +731,12 @@ Resources:
           Value: !Ref ContactDept
         - Key: X-Contact
           Value: !Ref ContactEmail
+        - Key: !Ref Tag1
+          Value: !Ref Tag1value
+        - Key: !Ref Tag2
+          Value: !Ref Tag2value
+        - Key: !Ref Tag3
+          Value: !Ref Tag3value
 
 #########################################################################################
 # ElasticSearch
@@ -690,6 +775,12 @@ Resources:
         Value: !Ref ContactDept
       - Key: X-Contact
         Value: !Ref ContactEmail
+      - Key: !Ref Tag1
+        Value: !Ref Tag1value
+      - Key: !Ref Tag2
+        Value: !Ref Tag2value
+      - Key: !Ref Tag3
+        Value: !Ref Tag3value
 
 
 #########################################################################################
