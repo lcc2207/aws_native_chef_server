@@ -211,7 +211,7 @@ Resources:
       - Key: !Ref CustomTagName2
         Value: !Ref CustomTagValue2
         PropagateAtLaunch: true
-      - Key: !Ref CustomTagName2
+      - Key: !Ref CustomTagName3
         Value: !Ref CustomTagValue3
         PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
@@ -244,7 +244,7 @@ Resources:
       - Key: !Ref CustomTagName2
         Value: !Ref CustomTagValue2
         PropagateAtLaunch: true
-      - Key: !Ref CustomTagName2
+      - Key: !Ref CustomTagName3
         Value: !Ref CustomTagValue3
         PropagateAtLaunch: true
       VPCZoneIdentifier: !Ref ChefServerSubnets
@@ -370,7 +370,7 @@ Resources:
         Value: !Ref CustomTagValue1
       - Key: !Ref CustomTagName2
         Value: !Ref CustomTagValue2
-      - Key: !Ref CustomTagName2
+      - Key: !Ref CustomTagName3
         Value: !Ref CustomTagValue3
       VpcId: !Ref VPC
 
@@ -402,7 +402,7 @@ Resources:
         Value: !Ref CustomTagValue1
       - Key: !Ref CustomTagName2
         Value: !Ref CustomTagValue2
-      - Key: !Ref CustomTagName2
+      - Key: !Ref CustomTagName3
         Value: !Ref CustomTagValue3
       VpcId: !Ref VPC
     Type: AWS::EC2::SecurityGroup
@@ -435,7 +435,7 @@ Resources:
           Value: !Ref CustomTagValue1
         - Key: !Ref CustomTagName2
           Value: !Ref CustomTagValue2
-        - Key: !Ref CustomTagName2
+        - Key: !Ref CustomTagName3
           Value: !Ref CustomTagValue3
 
   ChefALB:
@@ -458,7 +458,7 @@ Resources:
           Value: !Ref CustomTagValue1
         - Key: !Ref CustomTagName2
           Value: !Ref CustomTagValue2
-        - Key: !Ref CustomTagName2
+        - Key: !Ref CustomTagName3
           Value: !Ref CustomTagValue3
 
   ChefALBListener:
@@ -509,7 +509,7 @@ Resources:
             Value: !Ref CustomTagValue1
           - Key: !Ref CustomTagName2
             Value: !Ref CustomTagValue2
-          - Key: !Ref CustomTagName2
+          - Key: !Ref CustomTagName3
             Value: !Ref CustomTagValue3
 
   ChefBootstrapTargetGroup:
@@ -535,7 +535,7 @@ Resources:
             Value: !Ref CustomTagValue1
           - Key: !Ref CustomTagName2
             Value: !Ref CustomTagValue2
-          - Key: !Ref CustomTagName2
+          - Key: !Ref CustomTagName3
             Value: !Ref CustomTagValue3
 
   ServerLaunchConfig:
@@ -735,7 +735,7 @@ Resources:
           Value: !Ref CustomTagValue1
         - Key: !Ref CustomTagName2
           Value: !Ref CustomTagValue2
-        - Key: !Ref CustomTagName2
+        - Key: !Ref CustomTagName3
           Value: !Ref CustomTagValue3
 
 #########################################################################################
@@ -779,7 +779,7 @@ Resources:
         Value: !Ref CustomTagValue1
       - Key: !Ref CustomTagName2
         Value: !Ref CustomTagValue2
-      - Key: !Ref CustomTagName2
+      - Key: !Ref CustomTagName3
         Value: !Ref CustomTagValue3
 
 
