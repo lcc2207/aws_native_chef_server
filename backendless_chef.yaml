@@ -131,28 +131,28 @@ Parameters:
   ContactEmail:
     Description: Contact email for Cloudwatch notifications and instance tagging
     Type: String
-  Tag1:
+  CustomTagName1:
     Description: Custom Tag1
     Type: String
     Default: 'CustomTag1'
-  Tag1value:
-    Description: Custom Tag1 value
+  CustomTagValue1:
+    Description: Custom Tag 1 value
     Type: String
     Default: 'CustomTag1'
-  Tag2:
-    Description: Custom Tag2
+  CustomTagName2:
+    Description: Custom Tag 2
     Type: String
     Default: 'CustomTag2'
-  Tag2value:
-    Description: Custom Tag2 value
+  CustomTagValue2:
+    Description: Custom Tag 2 value
     Type: String
     Default: 'CustomTag2'
-  Tag3:
-    Description: Custom Tag3
+  CustomTagName3:
+    Description: Custom Tag 3
     Type: String
     Default: 'CustomTag3'
-  Tag3value:
-    Description: Custom Tag3 value
+  CustomTagValue3:
+    Description: Custom Tag 3 value
     Type: String
     Default: 'CustomTag3'
 
