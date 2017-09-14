@@ -155,6 +155,31 @@ Parameters:
     Description: Custom Tag3 value
     Type: String
     Default: 'CustomTag3'
+  ChefLDAPHost:
+    Description: Chef LDAP Host
+    Type: String
+  ChefLDAPHostPassword:
+    Description: Chef LDAP Host Password
+    Type: String
+    NoEcho: true
+  ChefLDAPHostPort:
+    Description: Chef LDAP Host Port
+    Type: String
+  ChefLDAPHostSSL:
+    Description: Chef LDAP Host Enable SSL
+    Type: String
+  ChefLDAPBaseDN:
+    Description: Chef LDAP Base DN
+    Type: String
+  ChefLDAPBindDN:
+    Description: Chef LDAP Bind DN
+    Type: String
+  ChefLDAPLoginAttr:
+    Description: Chef LDAP Login Attribute
+    Type: String
+  ChefLDAPSystemAdj:
+    Description: Chef LDAP System Adjective
+    Type: String
 
 Conditions:
   CreateChefServerIamRole:
@@ -634,6 +659,16 @@ Resources:
                 rabbitmq['queue_length_monitor_enabled'] = false
                 opscode_expander['enable'] = false
                 dark_launch['actions'] = false
+                unless '${ChefLDAPHost}' == ''
+                 ldap['base_dn'] = '${ChefLDAPBaseDN}'
+                 ldap['bind_dn'] = '${ChefLDAPBindDN}'
+                 ldap['bind_password'] = '${ChefLDAPHostPassword}'
+                 ldap['host'] = '${ChefLDAPHost}'
+                 ldap['login_attribute'] = '${ChefLDAPLoginAttr}'
+                 ldap['port'] = '${ChefLDAPHostPort}'
+                 ldap['enable_ssl'] = '${ChefLDAPHostSSL}'
+                 ldap['system_adjective'] = '${ChefLDAPSystemAdj}'
+                end
 
             /usr/local/bin/aws-signing-proxy:
               source: https://github.com/nsdavidson/aws-signing-proxy/releases/download/v0.3.0/aws-signing-proxy
